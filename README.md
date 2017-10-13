@@ -75,7 +75,9 @@
 
 2. **HTML5的了解**
 
-   > ​
+   > 新的HTML标准，
+   >
+   > 标签的增改废，新的api，语义化，多媒体，canvas，svg，本地存储，支持跨域，移动优先。
 
 3. **语义化**
 
@@ -126,17 +128,15 @@
 
    ```
    一个元素盒模型的层次从内到外分别为：内边距、边框和外边距   
-   IE8以下浏览器的盒模型中定义的元素的宽高不包括内边距和边框。
    ```
 
    > **延伸**：
 
    ```
    盒子模型分为两类：W3C标准盒子模型和IE盒子模型   
-   W3C盒子模型——属性高（height）和属性宽（width）这两个值不包含 填充（padding）和边框（border）
-   IE盒子模型——属性高（height）和属性宽（width）这两个值包含 填充（padding）和边框（border）
-   我们在编写页面代码的时候应该尽量使用标准的W3C盒子模型（需要在页面中声明DOCTYPE类型），
-   这样可以避免多个浏览器对同一页面的不兼容。
+   W3C盒子模型——属性高和属性宽不包含padding和border，即box-sizing的默认属性content-box
+   IE盒子模型——属性高和宽包含padding和border，即border-box。
+   我们在编写页面代码的时候应该尽量使用标准的W3C盒子模型（需要在页面中声明DOCTYPE类型），避免多个浏览器对同一页面的不兼容。
    因为如果不声明DOCTYPE类型，IE会将盒子模型解释为IE盒子模型，FireFox等会将其解释为W3C盒子模型；
    而如果在页面中声明了DOCTYPE模型，所有的浏览器都会把盒子模型解释为W3C盒子模型。
    ```
@@ -208,7 +208,11 @@
    >
    > important 比 内联优先级高,但内联比 id 要高
 
-6. **定位**
+6. **link标签和@import**
+
+   > [css link和@import区别用法](http://www.divcss5.com/rumen/r431.shtml)
+
+7. **定位**
 
    > 文档普通流、position定位、浮动
    >
@@ -239,9 +243,9 @@
 
 11. **响应式布局**
 
-    > 目前接触到的就是rem，em和媒体查询，听说有
+    > 目前接触到的就是rem，em和媒体查询，听过过手机端的ratio，viewport之类的，没用过
     >
-    > 用Chrome浏览器的调试工具观察效果
+    > 一般用Chrome浏览器的调试工具观察效果
 
 12. **图片轮播**
 
@@ -251,7 +255,13 @@
 
 13. **实现各种水平/垂直/水平垂直居中效果**
 
+    > [超简单的图片水平垂直居中](http://blog.csdn.net/u013836242/article/details/77747790)
+    >
     > [用css让一个容器水平垂直居中](http://www.cnblogs.com/xianyulaodi/p/5863305.html)
+    >
+    > [CSS布局奇淫技巧之--各种居中](http://www.cnblogs.com/2050/p/3392803.html)
+    >
+    > [大小不固定的图片、多行文字的水平垂直居中](http://www.zhangxinxu.com/wordpress/2009/08/%E5%A4%A7%E5%B0%8F%E4%B8%8D%E5%9B%BA%E5%AE%9A%E7%9A%84%E5%9B%BE%E7%89%87%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E5%AD%97%E7%9A%84%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/)
 
 14. **一边固定宽度一边自适应**
 
@@ -279,9 +289,7 @@
 
     > CSS: 上面的hack，盒子模型，新属性的兼容性等
     >
-    > JS: JS的事件机制相关的方法等
-    >
-    > ​
+    > JS: JS的一些方法不同，比如事件机制相关的方法和属性等等
 
     ​
 
@@ -308,21 +316,25 @@
 
   > 作用域链的作用是保证执行环境里有权访问的变量和函数是有序的，作用域链的变量只能向上访问，变量访问到window对象即被终止，作用域链向下访问变量是不被允许的。
 
-5. **数组去重**
+5. **闭包**
+
+   > [深入理解javascript原型和闭包（15）——闭包](http://www.cnblogs.com/wangfupeng1988/p/3994065.html)
+
+6. **数组去重**
 
    > [超方便的数组去重](http://blog.csdn.net/u013836242/article/details/77750061)
 
-6. **传入函数的参数列表**
+7. **传入函数的参数列表**
 
    > es5:arguments
    >
    > es6:
 
-7. **伪数组**
+8. **伪数组**
 
-   > 类似数组的对象
+   > 类数组对象，具有length属性且不具有数组的方法。例如：参数列表arguments，节点列表nodelist
 
-8. **实现一个querySelectorAll的功能**
+9. **实现一个querySelectorAll的功能**
 
    ```javascript
     function querySelect(el,className){
@@ -340,7 +352,7 @@
     }
    ```
 
-9. **实现sum(2,3);sum(2,3,4);sum(2,3,4,5);sum里面的参数不确定；重新设计一下这个函数，让它直接拥有数组的方法**
+10. **实现sum(2,3);sum(2,3,4);sum(2,3,4,5);sum里面的参数不确定；重新设计一下这个函数，让它直接拥有数组的方法**
 
    > 答：
    >
@@ -354,23 +366,25 @@
    >
    > ​         然后用[reduce](https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001435119854495d29b9b3d7028477a96ed74db95032675000##reduce)累加
    >
-   > 2.（var arg = Array.prototype.slice.call(arguments)）
+   > 2.var arg = Array.prototype.slice.call(arguments);
+   >
+   > 一般用这个，实际上就是[伪数组转数组方法（原生4种）](http://www.cnblogs.com/NTWang/p/6280447.html)，这里我再添加一个方法`Object.setPrototypeOf(arguments, Array.prototype);`
 
-10. **各种文本框，复选框之类的值怎么获取**
+11. **各种文本框，复选框之类的值怎么获取**
 
-  > 原生:
-  >
-  > jQuery: text()方法获取
+   > jQuery: html()修改/获取html内容，text()修改/获取文本内容，val()修改/获取表单元素的值；
+   >
+   > 原生:innerHTML，innerText，value。
 
-11. **ES6**
+12. **ES6**
 
-    > a 
+    > [30分钟掌握ES6/ES2015核心内容](http://www.jianshu.com/p/ebfeb687eb70)
 
-12. **Promise及相关异步操作**
+13. **Promise及相关异步操作**
 
     > ​
 
-13. **JavaScript垃圾回收方法**
+14. **JavaScript垃圾回收方法**
 
     > 1. 标记清除（mark and sweep）
     >
@@ -384,9 +398,9 @@
     >
     >    在IE中虽然JavaScript对象通过标记清除的方式进行垃圾回收，但BOM与DOM对象却是通过引用计数回收垃圾的， 也就是说只要涉及BOM及DOM就会出现循环引用问题。
 
-14. **Cookie读写**
+15. **Cookie读写**
 
-    > ​
+    > document.cookie进行读写
 
     ​
 
@@ -462,7 +476,7 @@
 
 6. **http2**
 
-   >可参考阮一峰老师网络协议相关博客读后总结_图解
+   >可参考[阮一峰老师网络协议相关博客读后总结_图解](http://blog.csdn.net/u013836242/article/details/77882631)
    >
    >HTTP/2引入了“服务端推（server push）”的概念，它允许服务端在客户端需要数据之前就主动地将数据发送到客户端缓存中，从而提高性能。
    >
@@ -516,58 +530,65 @@
    >    alert(quickSort([32,45,37,16,2,87]));//弹出“2,16,32,37,45,87”
    >
    >
-   >    //另一种实现
+   >    //另一种实现  
    >    function quickSort(left,right) {
-   >        var i=left;
-   >        var j=right;
+   >       var i=left;
+   >       var j=right;
    >
-   >        if(i>=j){
-   >            return;
-   >        }
+   >       if(i>=j){
+   >           return;
+   >       }
    >
-   >        while (i!==j){
-   >            while(arr[j]>=arr[left] && i<j){
-   >                j--;
-   >            }
-   >            while(arr[i]<=arr[left] && i<j){
-   >                i++;
-   >            }
-   >            if(i!==j){
-   >                temp=arr[j];
-   >                arr[j]=arr[i];
-   >                arr[i]=temp;
-   >            }
-   >        }
+   >       while (i!==j){
+   >           while(arr[j]>=arr[left] && i<j){
+   >               j--;
+   >           }
+   >           while(arr[i]<=arr[left] && i<j){
+   >               i++;
+   >           }
+   >           if(i!==j){
+   >               temp=arr[j];
+   >               arr[j]=arr[i];
+   >               arr[i]=temp;
+   >           }
+   >       }
    >
-   >        temp=arr[left];
-   >        arr[left]=arr[i];
-   >        arr[i]=temp;
+   >       temp=arr[left];
+   >       arr[left]=arr[i];
+   >       arr[i]=temp;
    >
-   >        quickSort(left,i-1);
-   >        quickSort(i+1,right);
+   >       quickSort(left,i-1);
+   >       quickSort(i+1,right);
    >    }
    >    ```
    >
+   >    ​
+   >
    > 2. 选择排序
+   >
+   >    ```javascript
+   >
+   >    ```
    >
    >    ​
    >
    > 3. 冒泡排序
    >
    >    ```javascript
-   >    //冒泡排序
-   >    function bubbleSort(arr) {
-   >        for(var i=0;i<arr.length-1;i++){
-   >            for(var j=0;j<arr.length-i;j++){
-   >                if(arr[j]>arr[j+1]){
-   >                    temp=arr[j+1];
-   >                    arr[j+1]=arr[j];
-   >                    arr[j]=temp;
-   >                }
-   >            }
-   >        }
-   >    }
+   >       //冒泡排序
+   >       function bubbleSort(arr) {
+   >           for(var i=0;i<arr.length-1;i++){
+   >               for(var j=0;j<arr.length-i;j++){
+   >                   if(arr[j]>arr[j+1]){
+   >                       temp=arr[j+1];
+   >                       arr[j+1]=arr[j];
+   >                       arr[j]=temp;
+   >                   }
+   >               }
+   >           }
+   >       }
    >    ```
+   >
    >
    > 4. 桶排序
    >
@@ -651,10 +672,9 @@
 
 2. 绝对路径和相对路径
 
-   > 绝对路径是
+   > 绝对路径:从盘符开始
    >
-   > 相对路径是
-
+   > 相对路径:从当前位置开始
 
 
 ---
@@ -670,7 +690,6 @@
 2. **前端整体架构**
 
    > [自己总结的web前端知识体系大全【欢迎补充】](http://www.cnblogs.com/wangfupeng1988/p/4649709.html)
-
 
 
 ---
