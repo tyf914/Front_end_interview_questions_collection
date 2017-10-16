@@ -811,3 +811,4 @@
     [1]: http://www.nowcoder.com/discuss/7600
     [2]: http://www.nowcoder.com/discuss/5168
     [3]: https://mdluo.github.io/blog/about-front-end-interview/
+    [4]: https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers   （高端向，还没看先存着）
